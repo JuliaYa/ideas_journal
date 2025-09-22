@@ -79,15 +79,6 @@ WSGI_APPLICATION = 'justsite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "OPTIONS": {
-            "passfile": ".my_pgpass",
-            "server_side_binding": True,
-        },
-    }
-}
 
 DATABASES = {
     'default': {
