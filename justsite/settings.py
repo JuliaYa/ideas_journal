@@ -25,8 +25,9 @@ SECRET_KEY = 'django-insecure-4t$wi@!6c+mg5^-u#0v#0dny8*4*ryip@m_+-*)%n!6)k@t-e6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+   'ddezx-178-66-5-61.a.free.pinggy.link'
+]
 
 # Application definition
 
@@ -38,10 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'rest_framework',
     'rest_framework_simplejwt',
+    "corsheaders",
 ]
-INSTALLED_APPS += ['corsheaders']
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
