@@ -25,10 +25,6 @@ SECRET_KEY = 'django-insecure-4t$wi@!6c+mg5^-u#0v#0dny8*4*ryip@m_+-*)%n!6)k@t-e6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-   'ddezx-178-66-5-61.a.free.pinggy.link'
-]
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -47,14 +43,26 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:8081",   # Expo Web
+#     "http://127.0.0.1:8081",
+#     "https://ipxdx-178-66-5-61.a.free.pinggy.link",  # your Pinggy tunnel domain
+# ]
+
+# ALLOWED_HOSTS = [
+#     'localhost',
+#     '127.0.0.1',
+#     'ipxdx-178-66-5-61.a.free.pinggy.link'
+# ]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
