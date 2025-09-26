@@ -25,7 +25,7 @@ def details(request, idea_id):
     return render(request, "ideas/details.html", {"idea": idea})
 
 @api_view(['GET'])
-def idea_details(idea_id):
+def idea_details(_, idea_id):
     try:
         idea = Idea.objects.get(pk=idea_id)
     except Idea.DoesNotExist:
