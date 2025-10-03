@@ -52,16 +52,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:8081",   # Expo Web
-#     "http://127.0.0.1:8081",
-#     "https://ipxdx-178-66-5-61.a.free.pinggy.link",  # your Pinggy tunnel domain
-# ]
+# uncommit when using pinggi
 
 # ALLOWED_HOSTS = [
 #     'localhost',
 #     '127.0.0.1',
-#     'ipxdx-178-66-5-61.a.free.pinggy.link'
+#     'rnwct-95-216-27-23.a.free.pinggy.link'
 # ]
 
 CORS_ALLOW_ALL_ORIGINS = True
