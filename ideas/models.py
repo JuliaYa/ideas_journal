@@ -18,4 +18,5 @@ class Idea(models.Model):
     # todo: set up media serving in dev and prod
     main_picture = models.ImageField(upload_to='ideas/main_pictures/', null=True, blank=True)
 
-
+    class Meta:
+        ordering = ['-updated_at']
