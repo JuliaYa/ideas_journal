@@ -52,13 +52,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# uncommit when using pinggi
-
-# ALLOWED_HOSTS = [
-#     'localhost',
-#     '127.0.0.1',
-#     'rnwct-95-216-27-23.a.free.pinggy.link'
-# ]
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '0.0.0.0',
+    '192.168.1.176'
+]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
