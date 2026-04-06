@@ -8,6 +8,13 @@ class IdeaViewSet(viewsets.ModelViewSet):
     queryset = Idea.objects.all()
     serializer_class = IdeaSerializer
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        status = self.request.query_params.get('status')
+        if status:
+            qs = qs.filter(status=status)
+        return qs
+
 def index(request):
     latest_ideas= Idea.objects.order_by("created_at")[:10]
     context = {"latest_ideas": latest_ideas}
