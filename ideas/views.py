@@ -1,9 +1,10 @@
 from django.http import Http404
 from django.shortcuts import render
 from rest_framework import viewsets
+from rest_framework.parsers import FormParser, JSONParser, MultiPartParser
 
-from .models import Idea
-from .serializers import IdeaSerializer
+from .models import Idea, NoteEntry
+from .serializers import IdeaSerializer, NoteEntrySerializer
 
 
 class IdeaViewSet(viewsets.ModelViewSet):
@@ -16,6 +17,17 @@ class IdeaViewSet(viewsets.ModelViewSet):
         if status:
             qs = qs.filter(status=status)
         return qs
+
+
+class NoteEntryViewSet(viewsets.ModelViewSet):
+    serializer_class = NoteEntrySerializer
+    parser_classes = [MultiPartParser, FormParser, JSONParser]
+
+    def get_queryset(self):
+        return NoteEntry.objects.filter(idea_id=self.kwargs['idea_pk'])
+
+    def perform_create(self, serializer):
+        serializer.save(idea_id=self.kwargs['idea_pk'])
 
 
 def index(request):
