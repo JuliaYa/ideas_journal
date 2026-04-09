@@ -1,5 +1,7 @@
 from rest_framework import serializers
+
 from .models import Idea
+
 
 class IdeaSerializer(serializers.ModelSerializer):
     main_picture = serializers.ImageField(required=False, allow_null=True, default=None)

@@ -1,8 +1,10 @@
-from django.shortcuts import render
 from django.http import Http404
+from django.shortcuts import render
 from rest_framework import viewsets
-from .serializers import IdeaSerializer
+
 from .models import Idea
+from .serializers import IdeaSerializer
+
 
 class IdeaViewSet(viewsets.ModelViewSet):
     queryset = Idea.objects.all()
@@ -15,14 +17,16 @@ class IdeaViewSet(viewsets.ModelViewSet):
             qs = qs.filter(status=status)
         return qs
 
+
 def index(request):
-    latest_ideas= Idea.objects.order_by("created_at")[:10]
-    context = {"latest_ideas": latest_ideas}
-    return render(request, "ideas/index.html", context)
+    latest_ideas = Idea.objects.order_by('created_at')[:10]
+    context = {'latest_ideas': latest_ideas}
+    return render(request, 'ideas/index.html', context)
+
 
 def details(request, idea_id):
     try:
         idea = Idea.objects.get(pk=idea_id)
     except Idea.DoesNotExist:
-        raise Http404("Idea does not exist")
-    return render(request, "ideas/details.html", {"idea": idea})
+        raise Http404('Idea does not exist')
+    return render(request, 'ideas/details.html', {'idea': idea})

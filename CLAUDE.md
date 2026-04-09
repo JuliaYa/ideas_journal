@@ -6,6 +6,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Ideas Journal — a Django 5.2 app for tracking personal ideas. Provides both server-rendered template views and a REST API (Django REST Framework) with JWT authentication. Uses PostgreSQL.
 
+## Mobile App (separate repo)
+
+Expo/React Native app at `/Users/julia/dev/ideaappmobile`. Uses Axios + JWT auth against this backend's API. Key files:
+- `app/services/api.ts` — Axios instance with token refresh interceptor
+- `app/services/ideas.ts` — CRUD operations for ideas
+- `app/services/notes.ts` — Notes API service
+- `app/IdeaDetails.tsx` — Idea detail screen with notes timeline
+
+**FormData gotcha:** React Native `FormData.append()` accepts `{ uri, name, type }` objects; browsers require `Blob`/`File`. Use `Platform.OS` check when uploading files. Send plain JSON when no file is attached.
+
 ## Common Commands
 
 ```bash
@@ -33,6 +43,10 @@ python manage.py migrate            # Apply migrations
 ## Dependencies
 
 Install with `pip install -r requirements.txt`. Key packages: Django, djangorestframework, djangorestframework-simplejwt, django-cors-headers, django-model-utils, Pillow, psycopg.
+
+## Gotchas
+
+- DRF `ImageField`/`FileField`: model-level `blank=True` doesn't make the serializer accept empty strings. Override `to_internal_value` to convert `""` → `None` if the client may send empty strings.
 
 ## Database
 
