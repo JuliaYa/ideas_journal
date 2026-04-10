@@ -13,6 +13,9 @@ Expo/React Native app at `/Users/julia/dev/ideaappmobile`. Uses Axios + JWT auth
 - `app/services/ideas.ts` — CRUD operations for ideas
 - `app/services/notes.ts` — Notes API service
 - `app/IdeaDetails.tsx` — Idea detail screen with notes timeline
+- `app/design.ts` — Clay-inspired design tokens (colors, shadows, radii, spacing)
+- `app/components/NoteTimeline.tsx` — Notes timeline with audio playback
+- `app/components/NoteInput.tsx` — Chat-style input bar (text/image/audio modes)
 
 **FormData gotcha:** React Native `FormData.append()` accepts `{ uri, name, type }` objects; browsers require `Blob`/`File`. Use `Platform.OS` check when uploading files. Send plain JSON when no file is attached.
 
@@ -34,15 +37,18 @@ python manage.py migrate            # Apply migrations
 
 **URL structure**:
 - `/api/ideas/` — REST CRUD (IdeaViewSet)
+- `/api/ideas/{id}/notes/` — Nested notes CRUD (NoteEntryViewSet, via `drf-nested-routers`)
 - `/api/token/` and `/api/token/refresh/` — JWT auth
 - `/ideas/` — Server-rendered template views
 - `/admin/` — Django admin
 
 **Key flow**: The Idea model uses `django-model-utils` StatusField for status tracking (`new`, `in_progress`, `done`, `archived`). The API serializer exposes all model fields. Default ordering is `-updated_at`.
 
+**Notes feature**: NoteEntry (text+images or audio) and NoteImage models in the `ideas` app. NoteEntrySerializer handles multipart image uploads via `request.FILES.getlist('images')`. Notes are ordered `-created_at`.
+
 ## Dependencies
 
-Install with `pip install -r requirements.txt`. Key packages: Django, djangorestframework, djangorestframework-simplejwt, django-cors-headers, django-model-utils, Pillow, psycopg.
+Install with `pip install -r requirements.txt`. Key packages: Django, djangorestframework, djangorestframework-simplejwt, django-cors-headers, django-model-utils, drf-nested-routers, Pillow, psycopg.
 
 ## Gotchas
 
