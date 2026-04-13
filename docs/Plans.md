@@ -11,10 +11,10 @@
 
 ## To Do
 
-- [ ] Delete main picture without replacing it; physically remove the old file from disk (currently orphaned files remain)
+- [x] Auto-delete orphaned media files when images are replaced/cleared or models are deleted (Django signals)
+- [x] Fix screen flicker when switching status filters (stale-while-revalidate pattern)
 - [ ] Design a proper auth flow and user registration form
 - [ ] Write tests (backend + mobile)
-- [ ] Fix screen flicker when switching status filters (full list re-render)
 - [ ] Add reminders for in-progress ideas (settings screen: configure reminder pattern/schedule)
 - [ ] Add a Pinterest-style card view for ideas (user can switch view type in settings)
 - [ ] Add AI support to help move forward with idea realisation

@@ -14,6 +14,7 @@
 10. **Filter by status** — `?status=` query parameter on `/api/ideas/` endpoint (server-side filtering)
 11. **Media serving** — `MEDIA_URL`/`MEDIA_ROOT` configured, dev server serves uploaded files
 12. **Notes API** — nested CRUD at `/api/ideas/{id}/notes/` via `drf-nested-routers`, supports text+images and audio note types
+13. **Media file cleanup** — Django signals (`pre_save`, `post_delete`) auto-delete orphaned files when images are replaced/cleared or models are deleted, including cascade deletes
 
 ## Mobile App (React Native/Expo — ideaappmobile)
 
@@ -35,6 +36,7 @@
 16. **Home screen** — big stacked card-style buttons for easy tapping ("I have an Idea" primary ube, "Dive into Ideas" secondary white)
 17. **Persistent Home button** — home icon in header on all screens except index
 18. **Desktop width limit** — app content capped at 480px and centered for browser testing
+19. **Smooth filter switching** — no full-screen spinner when changing status filters, stale list stays visible while new data loads
 
 ## Infrastructure
 
