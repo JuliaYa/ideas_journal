@@ -9,6 +9,7 @@ Ideas Journal — a Django 5.2 app for tracking personal ideas. Provides both se
 ## Mobile App (separate repo)
 
 Expo/React Native app at `/Users/julia/dev/ideaappmobile`. Uses Axios + JWT auth against this backend's API. Key files:
+- `app/index.tsx` — Home screen with big stacked action buttons (primary ube "I have an Idea", secondary white "Dive into Ideas")
 - `app/services/api.ts` — Axios instance with token refresh interceptor
 - `app/services/ideas.ts` — CRUD operations for ideas
 - `app/services/notes.ts` — Notes API service
